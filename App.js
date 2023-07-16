@@ -1,20 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from "react-native";
+import Navbar from "./components/Navbar";
+import { useState } from "react";
+import NoteList from "./components/NotesList";
 
 export default function App() {
+  const [searchInput, setSearchInput] = useState("");
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Navbar searchInput={searchInput} setSearchInput={setSearchInput} />
+      <View
+        style={{
+          height: "80%",
+          paddingLeft: "2%",
+          paddingRight: "2%",
+          paddingTop: 0,
+          width: "100%",
+          marginTop: "1%",
+        }}
+      >
+        <ScrollView>
+          <NoteList searchInput={searchInput} />
+        </ScrollView>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#7F8487",
+    height: "100%",
+    width: "100%",
   },
 });
