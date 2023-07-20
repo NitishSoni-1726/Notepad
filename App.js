@@ -1,7 +1,8 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import Navbar from "./components/Navbar";
 import { useState } from "react";
 import NoteList from "./components/NotesList";
+import AddNotes from "./components/AddNotes";
 
 export default function App() {
   const [searchInput, setSearchInput] = useState("");
@@ -10,7 +11,7 @@ export default function App() {
       <Navbar searchInput={searchInput} setSearchInput={setSearchInput} />
       <View
         style={{
-          height: "80%",
+          height: "84%",
           paddingLeft: "2%",
           paddingRight: "2%",
           paddingTop: 0,
@@ -21,6 +22,7 @@ export default function App() {
         <ScrollView>
           <NoteList searchInput={searchInput} />
         </ScrollView>
+        <AddNotes />
       </View>
     </View>
   );
