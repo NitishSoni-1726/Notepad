@@ -28,7 +28,7 @@ export default function Notes(props) {
               Date: ({props.date})
             </Text>
           </View>
-          <Text style={{ color: "white", fontSize: 15, maxHeight: 80 }}>
+          <Text style={{ color: "white", fontSize: 15, maxHeight: 55 }}>
             {props.note}
           </Text>
         </View>
