@@ -1,9 +1,10 @@
+import * as React from "react";
 import debounce from "debounce";
 import { View, TextInput } from "react-native";
-import { Icon } from "react-native-elements";
 
 export default function Navbar(props) {
   const handleSearch = debounce((input) => {
+    console.log(input);
     props.setSearchInput(input);
   }, 500);
   return (
@@ -12,16 +13,14 @@ export default function Navbar(props) {
         height: "15%",
         display: "flex",
         alignItems: "center",
+        width: "100%",
         justifyContent: "center",
         backgroundColor: "#27374D",
-        paddingBottom: 10,
+        paddingTop: 30,
       }}
     >
       <View
         style={{
-          marginTop: "10%",
-          paddingLeft: "2%",
-          paddingRight: "2%",
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
@@ -30,7 +29,6 @@ export default function Navbar(props) {
           width: "100%",
         }}
       >
-        <Icon name="bars" type="font-awesome-5" color="white"></Icon>
         <TextInput
           placeholder="Type To Search..."
           placeholderTextColor="white"
