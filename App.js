@@ -1,30 +1,43 @@
-import { ScrollView, StyleSheet, View } from "react-native";
-import Navbar from "./components/Navbar";
+import * as React from "react";
+import { StyleSheet, View } from "react-native";
 import { useState } from "react";
 import NoteList from "./components/NotesList";
-import AddNotes from "./components/AddNotes";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import NewNote from "./components/NewNote";
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [searchInput, setSearchInput] = useState("");
   return (
-    <View style={styles.container}>
-      <Navbar searchInput={searchInput} setSearchInput={setSearchInput} />
-      <View
-        style={{
-          height: "84%",
-          paddingLeft: "2%",
-          paddingRight: "2%",
-          paddingTop: 0,
-          width: "100%",
-          marginTop: "1%",
-        }}
-      >
-        <ScrollView>
-          <NoteList searchInput={searchInput} />
-        </ScrollView>
-        <AddNotes />
+    <NavigationContainer>
+      <View style={styles.container}>
+        <View
+          style={{
+            height: "100%",
+            paddingTop: 0,
+            width: "100%",
+            marginTop: "1%",
+          }}
+        >
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false,
+            }}
+          >
+            <Stack.Screen name="Notes">
+              {(props) => (
+                <NewNote
+                  {...props}
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                />
+              )}
+            </Stack.Screen>
+          </Stack.Navigator>
+        </View>
       </View>
-    </View>
+    </NavigationContainer>
   );
 }
 
