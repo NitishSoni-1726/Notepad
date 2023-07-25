@@ -1,3 +1,4 @@
+import * as React from "react";
 import { Text, View } from "react-native";
 import { Icon } from "react-native-elements";
 
@@ -28,7 +29,14 @@ export default function Notes(props) {
               Date: ({props.date})
             </Text>
           </View>
-          <Text style={{ color: "white", fontSize: 15, maxHeight: 55 }}>
+          <Text
+            style={{
+              color: "white",
+              fontSize: 15,
+              maxHeight: 70,
+              overflow: "hidden",
+            }}
+          >
             {props.note}
           </Text>
         </View>
